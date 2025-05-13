@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏥 Hệ Thống Quản Lý Chăm Sóc Sức Khỏe
 
-## Getting Started
+## 🤖 Giới thiệu
+Ứng dụng quản lý bệnh nhân giúp người dùng:
+- Đăng ký làm bệnh nhân
+- Đặt và quản lý lịch hẹn với bác sĩ
+- Quản trị viên xác nhận, hủy, gửi SMS xác nhận,...
+- Tối ưu trải nghiệm trên mọi thiết bị
 
-First, run the development server:
+Dự án được xây dựng với **Next.js**, **Appwrite**, **TypeScript**, **TailwindCSS**, **ShadCN**, **Twilio**, **Sentry**...
+
+---
+
+## ⚙️ Công nghệ sử dụng
+
+- ⚛️ Next.js
+- 🎨 TailwindCSS
+- 🧠 TypeScript
+- 🛡 Appwrite (Auth & Storage)
+- 🧰 ShadCN UI
+- 📱 Twilio (SMS Notification)
+- 🔍 Sentry (Theo dõi lỗi và hiệu năng)
+
+---
+
+## 🔋 Tính năng chính
+
+- ✅ **Đăng ký bệnh nhân** và tạo hồ sơ cá nhân
+- 📅 **Đặt lịch hẹn** với bác sĩ, không giới hạn số lượng
+- 🧑‍💼 **Quản trị viên quản lý lịch hẹn**
+- ⏰ **Xác nhận & hủy lịch** từ phía quản trị viên
+- 📩 **Gửi SMS xác nhận lịch hẹn**
+- 📱 **Giao diện phản hồi tốt** trên mọi thiết bị
+- 🗂 **Tải tệp** bằng Appwrite Storage
+- 🚨 **Theo dõi hiệu suất** bằng Sentry
+
+---
+
+## 🚀 Khởi động nhanh
 
 ```bash
 npm run dev
-# or
+# hoặc
 yarn dev
-# or
+# hoặc
 pnpm dev
-# or
+# hoặc
 bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
