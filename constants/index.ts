@@ -1,4 +1,4 @@
-export const GenderOptions = ["Male", "Female", "Other"];
+export const GenderOptions = ["male", "famale", "other"];
 
 export const PatientFormDefaultValues = {
   firstName: "",
@@ -27,55 +27,55 @@ export const PatientFormDefaultValues = {
 };
 
 export const IdentificationTypes = [
-  "Birth Certificate",
-  "Driver's License",
-  "Medical Insurance Card/Policy",
-  "Military ID Card",
-  "National Identity Card",
-  "Passport",
-  "Resident Alien Card (Green Card)",
-  "Social Security Card",
-  "State ID Card",
-  "Student ID Card",
-  "Voter ID Card",
+  "Giấy khai sinh",
+  "Giấy phép lái xe",
+  "Thẻ/Chính sách bảo hiểm y tế",
+  "Thẻ căn cước quân nhân",
+  "Thẻ căn cước quốc gia",
+  "Hộ chiếu",
+  "Thẻ thường trú nhân (Thẻ xanh)",
+  "Thẻ an sinh xã hội",
+  "Thẻ căn cước tiểu bang",
+  "Thẻ căn cước sinh viên",
+  "Thẻ căn cước cử tri",
 ];
 
 export const Doctors = [
   {
     image: "/assets/images/dr-green.png",
-    name: "John Green",
+    name: "Bác sĩ Nguyễn Văn An",
   },
   {
     image: "/assets/images/dr-cameron.png",
-    name: "Leila Cameron",
+    name: "Bác sĩ Lê Thị Mai",
   },
   {
     image: "/assets/images/dr-livingston.png",
-    name: "David Livingston",
+    name: "Bác sĩ Trần Minh Đức",
   },
   {
     image: "/assets/images/dr-peter.png",
-    name: "Evan Peter",
+    name: "Bác sĩ Phạm Hoàng Evan",
   },
   {
     image: "/assets/images/dr-powell.png",
-    name: "Jane Powell",
+    name: "Bác sĩ Vũ Thuỳ Trang",
   },
   {
     image: "/assets/images/dr-remirez.png",
-    name: "Alex Ramirez",
+    name: "Bác sĩ Bùi Quang Khải",
   },
   {
     image: "/assets/images/dr-lee.png",
-    name: "Jasmine Lee",
+    name: "Bác sĩ Hoàng Yến My",
   },
   {
     image: "/assets/images/dr-cruz.png",
-    name: "Alyana Cruz",
+    name: "Bác sĩ Đặng Phương Anh",
   },
   {
     image: "/assets/images/dr-sharma.png",
-    name: "Hardik Sharma",
+    name: "Bác sĩ Ngô Gia Hưng",
   },
 ];
 
