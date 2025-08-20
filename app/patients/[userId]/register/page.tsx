@@ -13,13 +13,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
       {/*TODO: OTP Vertication | Passkey*/}
       <section className="remove-scrollbar container ">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-1">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
+          
           {/*  Biểu mẫu bệnh lý*/}
           {/* <PatientForm/> */}
           <RegisterForm user={user} />
@@ -37,7 +31,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
         height={1000}
         width={1000}
         alt="patient"
-        className="side-img max-w-[390px]"
+        className="side-img max-w-[500px]"
       />
     </div>
   );

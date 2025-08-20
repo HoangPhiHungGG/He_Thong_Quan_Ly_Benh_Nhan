@@ -45,8 +45,7 @@ export const AppointmentModal = ({
         <DialogHeader className="mb-4 space-y-3">
           <DialogTitle className="capitalize">{type} Appointment</DialogTitle>
           <DialogDescription>
-            Please fill in the following details to {type} appointment
-          </DialogDescription>
+Vui lòng xem các thông tin sau để {type} cuộc hẹn          </DialogDescription>
         </DialogHeader>
 
         <AppointmentForm

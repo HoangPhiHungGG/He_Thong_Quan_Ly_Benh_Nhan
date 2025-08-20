@@ -12,13 +12,7 @@ const Appointment = async ({ params: { userId } }: SearchParamProps) => {
       {/*TODO: OTP Vertication | Passkey*/}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[860px] flex-1 justify-between">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
+          
           {/*  Biểu mẫu bệnh lý*/}
           <AppointmentForm
             patientId={patient?.$id}

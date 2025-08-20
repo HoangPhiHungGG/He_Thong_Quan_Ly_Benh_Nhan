@@ -15,7 +15,7 @@ const fontSans = FontSans({
 
 
 export const metadata: Metadata = {
-  title: "CarePulse",
+  title: "PhiHungManage",
   description: "A healthcare management system",
 };
 

@@ -1,43 +1,41 @@
+
+
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home({ searchParams }: SearchParamProps) {
   const isAdmin = searchParams.admin === "true";
+
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}
-      {/*TODO: OTP Vertication | Passkey*/}
+
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
-          {/*  Biểu mẫu bệnh lý*/}
+          
+
           <PatientForm />
-          {/*  */}
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2025 CarePulse
+          
+          <div className="text-sm mt-20 flex justify-between items-center">
+            <p className="copyright text-text-secondary">
+              © 2024 CarePulse
             </p>
-            <Link href="/?admin=true " className="text-white">
-              Admin
+            <Link href="/?admin=true" className="text-primary hover:underline">
+              Admin Login
             </Link>
           </div>
         </div>
       </section>
+
+      
       <Image
         src="/assets/images/onboarding-img.png"
         height={1000}
         width={1000}
-        alt="patient"
-        className="side-img max-w-[50%]"
+        alt="A doctor smiling in a bright clinic"
+        className="side-img max-w-[60%]"
       />
     </div>
   );
