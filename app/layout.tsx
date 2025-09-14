@@ -1,9 +1,9 @@
-
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
 
 const fontSans = FontSans({
@@ -36,6 +36,8 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" >
           {children}
+                    <Toaster position="top-right" />
+
         </ThemeProvider>
       </body>
     </html>

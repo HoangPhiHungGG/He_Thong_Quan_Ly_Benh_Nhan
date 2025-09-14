@@ -136,6 +136,9 @@
   .shad-primary-btn {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg py-3 px-6 text-base font-semibold shadow-button transition-all duration-300 hover:shadow-lg;
   }
+  .shad-destructive-btn {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-lg py-1 px-3 text-sm font-semibold shadow-sm transition-all duration-300;
+  }
 
   .shad-danger-btn {
     @apply bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-lg py-3 px-6 text-base font-semibold shadow-button transition-all duration-300 hover:shadow-lg;

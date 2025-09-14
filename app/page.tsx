@@ -1,5 +1,4 @@
 
-
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image";
@@ -25,6 +24,9 @@ export default function Home({ searchParams }: SearchParamProps) {
             <Link href="/?admin=true" className="text-primary hover:underline">
               Admin Login
             </Link>
+            <Link href="/doctors/login" className="text-primary hover:underline">
+                Doctor Login
+              </Link>
           </div>
         </div>
       </section>
