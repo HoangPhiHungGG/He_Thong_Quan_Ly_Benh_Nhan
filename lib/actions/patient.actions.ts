@@ -68,28 +68,63 @@ export const getUser = async (userId: string) => {
 //     );
 //   }
 // };
+//cmt
+// export const getPatient = async (patientId: string) => {
+//   // Thêm một kiểm tra đầu vào để đảm bảo patientId hợp lệ
+//   if (!patientId) {
+//     console.error("getPatient called with no patientId.");
+//     return null;
+//   }
 
-export const getPatient = async (patientId: string) => {
-  // Thêm một kiểm tra đầu vào để đảm bảo patientId hợp lệ
-  if (!patientId) {
-    console.error("getPatient called with no patientId.");
-    return null;
-  }
+//   try {
+//     const patient = await databases.getDocument(
+//       DATABASE_ID!,
+//       PATIENT_COLLECTION_ID!,
+//       patientId
+//     );
 
+//     // Nếu getDocument thành công, nó sẽ trả về một object.
+//     // Nếu không tìm thấy, nó sẽ ném ra một lỗi và đi vào khối catch.
+//     return parseStringify(patient);
+//   } catch (error) {
+//     // Bắt tất cả các lỗi, bao gồm cả lỗi "document not found"
+//     console.error(`Failed to retrieve patient with ID ${patientId}:`, error);
+
+//     return null;
+//   }
+// };
+// cmt
+export const getPatient = async (patientIdOrUserId: string) => {
   try {
-    const patient = await databases.getDocument(
-      DATABASE_ID!,
-      PATIENT_COLLECTION_ID!,
-      patientId
-    );
+    // Ưu tiên tìm bằng document ID (cách này nhanh nhất)
+    try {
+      const patient = await databases.getDocument(
+        DATABASE_ID!,
+        PATIENT_COLLECTION_ID!,
+        patientIdOrUserId
+      );
+      return parseStringify(patient);
+    } catch (error) {
+      // Nếu không tìm thấy bằng document ID, thử tìm bằng user ID
+      console.log(`Could not find patient by document ID, trying by user ID: ${patientIdOrUserId}`);
+      const patients = await databases.listDocuments(
+        DATABASE_ID!,
+        PATIENT_COLLECTION_ID!,
+        [Query.equal("userId", [patientIdOrUserId])]
+      );
 
-    // Nếu getDocument thành công, nó sẽ trả về một object.
-    // Nếu không tìm thấy, nó sẽ ném ra một lỗi và đi vào khối catch.
-    return parseStringify(patient);
+      if (patients.documents.length > 0) {
+        return parseStringify(patients.documents[0]);
+      } else {
+        // Nếu không tìm thấy bằng cả hai cách, trả về null
+        return null;
+      }
+    }
   } catch (error) {
-    // Bắt tất cả các lỗi, bao gồm cả lỗi "document not found"
-    console.error(`Failed to retrieve patient with ID ${patientId}:`, error);
-
+    console.error(
+      `An error occurred while retrieving patient with ID/UserID ${patientIdOrUserId}:`,
+      error
+    );
     return null;
   }
 };
