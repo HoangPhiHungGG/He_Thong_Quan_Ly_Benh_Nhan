@@ -12,31 +12,70 @@ import {
   users,
 } from "../appwrite.config";
 import { parseStringify } from "../utils";
+//Create User
+// export const createUser = async (user: CreateUserParams) => {
+//   try {
+//     // Create new user
+//     const newuser = await users.create(
+//       ID.unique(),
+//       user.email,
+//       user.phone,
+//       undefined,
+//       user.name
+//     );
 
+//     return parseStringify(newuser);
+//   } catch (error: any) {
+//     // Check existing user
+//     if (error && error?.code === 409) {
+//       const existingUser = await users.list([
+//         Query.equal("email", [user.email]),
+//       ]);
+
+//       return existingUser.users[0];
+//     }
+//     console.error("An error occurred while creating a new user:", error);
+//     return null;
+//   }
+// };
+//
+//
 export const createUser = async (user: CreateUserParams) => {
   try {
-    // Create new user
-    const newuser = await users.create(
+    // Cố gắng tạo user mới
+    const newUser = await users.create(
       ID.unique(),
       user.email,
       user.phone,
       undefined,
       user.name
     );
-
-    return parseStringify(newuser);
+    return parseStringify(newUser);
   } catch (error: any) {
-    // Check existing user
-    if (error && error?.code === 409) {
-      const existingUser = await users.list([
+    // =========================================================
+    // SỬA LẠI TOÀN BỘ KHỐI CATCH
+    // =========================================================
+    // Nếu lỗi là do user đã tồn tại (mã lỗi 409)
+    if (error && error.code === 409) {
+      // Tìm user đã tồn tại bằng email
+      const existingUsers = await users.list([
         Query.equal("email", [user.email]),
       ]);
 
-      return existingUser.users[0];
+      // users.list trả về một object có thuộc tính 'users' là một mảng
+      // Kiểm tra xem mảng có phần tử không
+      if (existingUsers.users.length > 0) {
+        // Trả về user đầu tiên tìm thấy
+        return parseStringify(existingUsers.users[0]);
+      }
     }
+
+    // Nếu có lỗi khác hoặc không tìm thấy user đã tồn tại
     console.error("An error occurred while creating a new user:", error);
+    return null; // Luôn trả về null nếu có lỗi
   }
 };
+
 //
 export const getUser = async (userId: string) => {
   try {
@@ -83,6 +122,20 @@ export const getUser = async (userId: string) => {
 //       patientId
 //     );
 
+// export const getPatient = async (patientId: string) => {
+//   // Thêm một kiểm tra đầu vào để đảm bảo patientId hợp lệ
+//   if (!patientId) {
+//     console.error("getPatient called with no patientId.");
+//     return null;
+//   }
+
+//   try {
+//     const patient = await databases.getDocument(
+//       DATABASE_ID!,
+//       PATIENT_COLLECTION_ID!,
+//       patientId
+//     );
+
 //     // Nếu getDocument thành công, nó sẽ trả về một object.
 //     // Nếu không tìm thấy, nó sẽ ném ra một lỗi và đi vào khối catch.
 //     return parseStringify(patient);
@@ -94,6 +147,7 @@ export const getUser = async (userId: string) => {
 //   }
 // };
 // cmt
+
 export const getPatient = async (patientIdOrUserId: string) => {
   try {
     // Ưu tiên tìm bằng document ID (cách này nhanh nhất)
@@ -106,7 +160,12 @@ export const getPatient = async (patientIdOrUserId: string) => {
       return parseStringify(patient);
     } catch (error) {
       // Nếu không tìm thấy bằng document ID, thử tìm bằng user ID
-      console.log(`Could not find patient by document ID, trying by user ID: ${patientIdOrUserId}`);
+      console.log(
+        `Could not find patient by document ID, trying by user ID: ${patientIdOrUserId}`
+      );
+      console.log(
+        `Could not find patient by document ID, trying by user ID: ${patientIdOrUserId}`
+      );
       const patients = await databases.listDocuments(
         DATABASE_ID!,
         PATIENT_COLLECTION_ID!,
@@ -128,6 +187,7 @@ export const getPatient = async (patientIdOrUserId: string) => {
     return null;
   }
 };
+
 //
 export const registerPatient = async ({
   identificationDocument,
@@ -188,3 +248,23 @@ export const getPatients = async () => {
     return [];
   }
 };
+
+// =========================================================
+// export const getPatientByUserId = async (userId: string) => {
+//   try {
+//     const patients = await databases.listDocuments(
+//       DATABASE_ID!,
+//       PATIENT_COLLECTION_ID!,
+//       [Query.equal("userId", [userId])]
+//     );
+
+//     // listDocuments trả về một mảng, chúng ta lấy phần tử đầu tiên
+//     return parseStringify(patients.documents[0]);
+//   } catch (error) {
+//     console.error(
+//       "An error occurred while retrieving the patient by user ID:",
+//       error
+//     );
+//     return null;
+//   }
+// };

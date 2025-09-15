@@ -95,11 +95,11 @@ export const AppointmentModal = ({
   // Xác định text và style dựa trên 'type'
   const isScheduling = type === "schedule";
   const buttonVariant = isScheduling ? "ghost" : "destructive";
-  const buttonText = isScheduling ? "Schedule" : "Cancel";
-  const title = isScheduling ? "Schedule Appointment" : "Cancel Appointment";
+  const buttonText = isScheduling ? "Xác nhận" : "Hủy";
+  const title = isScheduling ? "Xác nhận lịch hẹn" : "Hủy cuộc hẹn";
   const description = isScheduling
-    ? "Please confirm the following details to schedule."
-    : "Are you sure you want to cancel this appointment?";
+    ? "Vui lòng xác nhận các thông tin sau để lên lịch."
+    : "Bạn có chắc chắn muốn hủy cuộc hẹn này không?";
   const buttonClassName = isScheduling ? "text-success" : "shad-destructive-btn";
 
   return (
